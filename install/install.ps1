@@ -9,7 +9,7 @@
 # 2. $version or $v
 # 2. $exe or $e
 
-$repo="vicenteherrera/psa-checker"
+$repo="mozilla/psa-checker"
 $exe="psa-checker.exe"
 
 $ErrorActionPreference = 'Stop'

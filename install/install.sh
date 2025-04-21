@@ -5,8 +5,8 @@
 set -e
 
 executable_folder=${INSTALL_DIR:-"/usr/local/bin"} # Eventually, the executable file will be placed here
-target="vicenteherrera/psa-checker"
-owner="vicenteherrera"
+target="mozilla/psa-checker"
+owner="mozilla"
 repo="psa-checker"
 exe_name="psa-checker"
 githubUrl="https://github.com"

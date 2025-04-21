@@ -6,16 +6,16 @@ GIT_TAG := $(shell bash -c 'TAG=$$(git -c log.showSignature=false \
 	describe --tags --exact-match --abbrev=0 $(GIT_SHA) 2>/dev/null); echo "$${TAG:-dev}"')
 
 LDFLAGS=-s -w \
-        -X github.com/vicenteherrera/psa-checker/cmd/psa-checker.version=$(GIT_TAG) \
-        -X github.com/vicenteherrera/psa-checker/cmd/psa-checker.commit=$(GIT_SHA) \
-		-X github.com/vicenteherrera/psa-checker/cmd/psa-checker.date=$(date +"%Y-%m-%dT%H:%M:%S%z") \
-		-X github.com/vicenteherrera/psa-checker/cmd/psa-checker.builtBy="makefile"
+        -X github.com/mozilla/psa-checker/cmd/psa-checker.version=$(GIT_TAG) \
+        -X github.com/mozilla/psa-checker/cmd/psa-checker.commit=$(GIT_SHA) \
+		-X github.com/mozilla/psa-checker/cmd/psa-checker.date=$(date +"%Y-%m-%dT%H:%M:%S%z") \
+		-X github.com/mozilla/psa-checker/cmd/psa-checker.builtBy="makefile"
 
 # --------------------------------------------------------------------------------------
 
 TARGET_BIN=psa-checker
 MAIN_DIR=./
-CONTAINER_IMAGE=quay.io/vicenteherrera/psa-checker
+#CONTAINER_IMAGE=quay.io/mozilla/psa-checker
 
 .PHONY: all
 all: upgrade build run test test-e2e
@@ -42,7 +42,7 @@ run:
 
 # Lint
 
-lint: lint-go lint-yaml lint-containerfile
+lint: lint-go lint-yaml
 
 lint-go:
 	golangci-lint run
@@ -50,8 +50,8 @@ lint-go:
 lint-yaml:
 	yamllint .
 
-lint-containerfile:
-	hadolint build/Containerfile
+#lint-containerfile:
+#	hadolint build/Containerfile
 
 # Tests
 
@@ -94,24 +94,24 @@ install_yaml:
 	pip install --user ruamel.yaml.cmd
 
 # Container targets
-
-container-build:
-	@echo "Building container image"
-	@if groups $$USER | grep -q '\bdocker\b'; then RUNSUDO="" ; else RUNSUDO="sudo" ; fi && \
-	    $$RUNSUDO docker build -f build/Containerfile -t ${CONTAINER_IMAGE} .
-
-container-run:
-	@echo "Running container image"
-	@if groups $$USER | grep -q '\bdocker\b'; then RUNSUDO="" ; else RUNSUDO="sudo" ; fi && \
-	    $$RUNSUDO docker run --rm -it \
-		-v "$$(pwd)"/test/in.yaml:/bin/in.yaml \
-		-u $$(id -u $${USER}):$$(id -g $${USER}) \
-		${CONTAINER_IMAGE}
-
-# push the container image
-push:
-	${RUNSUDO} docker push ${CONTAINER_IMAGE}
-
-# pull the container image
-pull:
-	${RUNSUDO} docker pull ${CONTAINER_IMAGE}
+#
+#container-build:
+#	@echo "Building container image"
+#	@if groups $$USER | grep -q '\bdocker\b'; then RUNSUDO="" ; else RUNSUDO="sudo" ; fi && \
+#	    $$RUNSUDO docker build -f build/Containerfile -t ${CONTAINER_IMAGE} .
+#
+#container-run:
+#	@echo "Running container image"
+#	@if groups $$USER | grep -q '\bdocker\b'; then RUNSUDO="" ; else RUNSUDO="sudo" ; fi && \
+#	    $$RUNSUDO docker run --rm -it \
+#		-v "$$(pwd)"/test/in.yaml:/bin/in.yaml \
+#		-u $$(id -u $${USER}):$$(id -g $${USER}) \
+#		${CONTAINER_IMAGE}
+#
+## push the container image
+#push:
+#	${RUNSUDO} docker push ${CONTAINER_IMAGE}
+#
+## pull the container image
+#pull:
+#	${RUNSUDO} docker pull ${CONTAINER_IMAGE}

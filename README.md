@@ -1,11 +1,11 @@
-
 # Pod Security Admission command line checker
+Forked from https://github.com/vicenteherrera/psa-checker
 
-[![Go build](https://github.com/vicenteherrera/psa-checker/actions/workflows/go-build.yaml/badge.svg?branch=main&event=push)](https://github.com/vicenteherrera/psa-checker/actions/workflows/go-build.yaml)
-[![Go test unit](https://github.com/vicenteherrera/psa-checker/actions/workflows/go-test-unit.yaml/badge.svg?branch=main&event=push)](https://github.com/vicenteherrera/psa-checker/actions/workflows/go-build.yaml)
-[![Go test e2e](https://github.com/vicenteherrera/psa-checker/actions/workflows/go-test-e2e.yaml/badge.svg?branch=main&event=push)](https://github.com/vicenteherrera/psa-checker/actions/workflows/go-build.yaml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/vicenteherrera/psa-checker)](https://goreportcard.com/report/github.com/vicenteherrera/psa-checker)
-[![Go Reference](https://pkg.go.dev/badge/github.com/vicenteherrera/psa-checker.svg)](https://pkg.go.dev/github.com/vicenteherrera/psa-checker)
+[![Go build](https://github.com/mozilla/psa-checker/actions/workflows/go-build.yaml/badge.svg?branch=main&event=push)](https://github.com/mozilla/psa-checker/actions/workflows/go-build.yaml)
+[![Go test unit](https://github.com/mozilla/psa-checker/actions/workflows/go-test-unit.yaml/badge.svg?branch=main&event=push)](https://github.com/mozilla/psa-checker/actions/workflows/go-build.yaml)
+[![Go test e2e](https://github.com/mozilla/psa-checker/actions/workflows/go-test-e2e.yaml/badge.svg?branch=main&event=push)](https://github.com/mozilla/psa-checker/actions/workflows/go-build.yaml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mozilla/psa-checker)](https://goreportcard.com/report/github.com/mozilla/psa-checker)
+[![Go Reference](https://pkg.go.dev/badge/github.com/mozilla/psa-checker.svg)](https://pkg.go.dev/github.com/mozilla/psa-checker)
 [![License](https://img.shields.io/badge/license-Apache--2-brightgreen)](/LICENSE.txt)
 
 [Overview](#overview) | [Motivation](#motivation) |
@@ -17,11 +17,11 @@
 
 Command line tool to statically checks for _Pod Security Standards_ levels on Kubernetes YAML manifests, including from local files or Helm charts, those processed in CI/CD pipelines, or running pods.
 
-GitHub Repo: [github.com/vicenteherrera/psa-checker](https://github.com/vicenteherrera/psa-checker)  
-Web: [vicenteherrera.com/psa-checker](https://vicenteherrera.com/psa-checker)  
+GitHub Repo: [github.com/mozilla/psa-checker](https://github.com/mozilla/psa-checker)
+Web: [vicenteherrera.com/psa-checker/](https://vicenteherrera.com/psa-checker/)
 Installation to `$GOPATH/bin`:  
 ```bash
-curl -fsSL https://raw.githubusercontent.com/vicenteherrera/psa-checker/main/install/install.sh | INSTALL_DIR="$(go env GOPATH)/bin" bash
+curl -fsSL https://raw.githubusercontent.com/mozilla/psa-checker/main/install/install.sh | INSTALL_DIR="$(go env GOPATH)/bin" bash
 ```  
 
 
@@ -125,7 +125,7 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: '>=1.18.0'
-      - run: go install github.com/vicenteherrera/psa-checker@latest
+      - run: go install github.com/mozilla/psa-checker@latest
       - run: helm template ./helm_chart | psa-checker --level baseline -f -
 ```
 
@@ -142,7 +142,7 @@ This will work even if you don't have enabled the admission controller for Pod S
 
 ## Installation and Update
 
-To install or update to the latest release, go to [releases](https://github.com/vicenteherrera/psa-checker/releases), download the latest version for your platform, and extract the binary in a directory on your path.
+To install or update to the latest release, go to [releases](https://github.com/mozilla/psa-checker/releases), download the latest version for your platform, and extract the binary in a directory on your path.
 
 Or use these script:
 
@@ -150,18 +150,18 @@ Or use these script:
 # Linux / MacOs (Bash)
 
 ## install/update to `.go/bin`:
-curl -fsSL https://raw.githubusercontent.com/vicenteherrera/psa-checker/main/install/install.sh | INSTALL_DIR="$(go env GOPATH)/bin" bash
+curl -fsSL https://raw.githubusercontent.com/mozilla/psa-checker/main/install/install.sh | INSTALL_DIR="$(go env GOPATH)/bin" bash
 
 ## install/update to /usr/local/bin (requires sudo)
-curl -fsSL https://raw.githubusercontent.com/vicenteherrera/psa-checker/main/install/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/mozilla/psa-checker/main/install/install.sh | sudo bash
 
 # Windows (Powershell)
-iwr https://raw.githubusercontent.com/vicenteherrera/psa-checker/main/install/install.ps1 -useb | iex
+iwr https://raw.githubusercontent.com/mozilla/psa-checker/main/install/install.ps1 -useb | iex
 ```
 
 You could install with `go install`, but you may get an unstable version not yet tagged.
 ```bash
-go install github.com/vicenteherrera/psa-checker@latest
+go install github.com/mozilla/psa-checker@latest
 ```
 
 ## Build the binary
@@ -202,4 +202,4 @@ Legend:
 * Version_not_evaluable: The cart includes deployment, daemonset, etc. of v1beta1 that can't be evaluated by the library
 
 Check the latest evaluation results, including psa-checker PSS levels and [BadRobot operator score](https://github.com/controlplaneio/badrobot), for all charts here:
-* [Security Observatory for Helm Charts](https://vicenteherrera.com/secobs-charts/docs/generated/charts_levels)
+* [Security Observatory for Helm Charts](https://mozilla.com/secobs-charts/docs/generated/charts_levels)

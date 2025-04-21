@@ -6,7 +6,7 @@ import (
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"github.com/vicenteherrera/psa-checker/pkg/analyzer"
+	"github.com/mozilla/psa-checker/pkg/analyzer"
 )
 
 func TestGenerator(t *testing.T) {
