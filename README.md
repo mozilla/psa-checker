@@ -1,5 +1,5 @@
-
 # Pod Security Admission command line checker
+Forked from https://github.com/vicenteherrera/psa-checker
 
 [![Go build](https://github.com/mozilla/psa-checker/actions/workflows/go-build.yaml/badge.svg?branch=main&event=push)](https://github.com/mozilla/psa-checker/actions/workflows/go-build.yaml)
 [![Go test unit](https://github.com/mozilla/psa-checker/actions/workflows/go-test-unit.yaml/badge.svg?branch=main&event=push)](https://github.com/mozilla/psa-checker/actions/workflows/go-build.yaml)
@@ -18,7 +18,7 @@
 Command line tool to statically checks for _Pod Security Standards_ levels on Kubernetes YAML manifests, including from local files or Helm charts, those processed in CI/CD pipelines, or running pods.
 
 GitHub Repo: [github.com/mozilla/psa-checker](https://github.com/mozilla/psa-checker)
-Web: [mozilla.com/psa-checker](https://mozilla.com/psa-checker)
+Web: [vicenteherrera.com/psa-checker/](https://vicenteherrera.com/psa-checker/)
 Installation to `$GOPATH/bin`:  
 ```bash
 curl -fsSL https://raw.githubusercontent.com/mozilla/psa-checker/main/install/install.sh | INSTALL_DIR="$(go env GOPATH)/bin" bash
