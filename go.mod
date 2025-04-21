@@ -1,6 +1,8 @@
 module github.com/vicenteherrera/psa-checker
 
-go 1.18
+go 1.23.0
+
+toolchain go1.23.4
 
 require (
 	github.com/onsi/ginkgo/v2 v2.5.0
