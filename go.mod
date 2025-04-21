@@ -1,4 +1,4 @@
-module github.com/vicenteherrera/psa-checker
+module github.com/mozilla/psa-checker
 
 go 1.18
 

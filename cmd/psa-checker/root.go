@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	analyzer "github.com/vicenteherrera/psa-checker/pkg/analyzer"
+	analyzer "github.com/mozilla/psa-checker/pkg/analyzer"
 )
 
 var cfgFile string

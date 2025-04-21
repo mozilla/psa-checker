@@ -27,9 +27,9 @@ jobs:
         with:
           args: release
           ldflags: -s -w
-            -X github.com/vicenteherrera/psa-checker/cmd/psa-checker.version={{.Version}}
-            -X github.com/vicenteherrera/psa-checker/cmd/psa-checker.commit={{.Commit}}
-            -X github.com/vicenteherrera/psa-checker/cmd/psa-checker.date={{.Date}}
-            -X github.com/vicenteherrera/psa-checker/cmd/psa-checker.builtBy=goreleaser
+            -X github.com/mozilla/psa-checker/cmd/psa-checker.version={{.Version}}
+            -X github.com/mozilla/psa-checker/cmd/psa-checker.commit={{.Commit}}
+            -X github.com/mozilla/psa-checker/cmd/psa-checker.date={{.Date}}
+            -X github.com/mozilla/psa-checker/cmd/psa-checker.builtBy=goreleaser
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
